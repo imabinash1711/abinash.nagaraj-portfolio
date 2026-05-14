@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+@source "../rescript/**/*.mjs";
+@source "../**/*.astro";
+
+@variant dark (.dark &);

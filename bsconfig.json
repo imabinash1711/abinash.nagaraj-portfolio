@@ -1,0 +1,25 @@
+{
+  "name": "abinash.nagaraj-portfolio",
+  "sources": [
+    {
+      "dir": "src/rescript",
+      "subdirs": true
+    }
+  ],
+  "package-specs": [
+    {
+      "module": "esmodule",
+      "in-source": true
+    }
+  ],
+  "suffix": ".mjs",
+  "jsx": {
+    "version": 4,
+    "mode": "automatic"
+  },
+  "dependencies": ["@rescript/react"],
+  "ppx-flags": [],
+  "warnings": {
+    "error": "+101"
+  }
+}
