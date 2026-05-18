@@ -9,6 +9,17 @@ export default defineConfig({
 
   vite: {
     plugins: [tailwindcss()],
+    server: {
+      watch: {
+        // Watch ReScript compiled output files
+        ignored: ['!**/src/rescript/**/*.mjs'],
+        usePolling: false,
+      },
+      // Force reload when ReScript files change
+      hmr: {
+        overlay: true
+      }
+    },
     build: {
       rollupOptions: {
         output: {

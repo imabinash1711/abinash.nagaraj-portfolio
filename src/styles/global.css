@@ -4,3 +4,12 @@
 @source "../**/*.astro";
 
 @variant dark (.dark &);
+
+@theme {
+  --font-inter: "Inter", sans-serif;
+  --color-background: #0a0a0f;
+  --grid-template-columns-responsive-cards: repeat(
+    auto-fit,
+    minmax(300px, 1fr)
+  );
+}
