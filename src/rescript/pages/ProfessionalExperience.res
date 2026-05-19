@@ -94,47 +94,52 @@ module ExperienceCard = {
     ~isOpen: bool,
     ~setIsOpen: bool => unit,
   ) => {
-    <div className="flex flex-col gap-2">
+    let isMobile = UseMobileView.use()
+    <ResponsiveWrapper className="flex flex-col gap-2">
       {companyProject !== ""
-        ? <div
-            className="flex gap-2 items-center justify-between px-6 py-4 rounded-lg border border-gray-500/25 hover:border-purple-500/25 bg-gray-500/10 hover:bg-purple-500/10 hover:shadow-sm hover:shadow-purple-500/25 cursor-pointer transition-all duration-300"
-            onClick={_ => setIsOpen(!isOpen)}
-          >
-            <span className="flex gap-2 items-center font-semibold">
-              <span className="size-2 rounded-full bg-purple-500" />
-              {React.string(companyProject)}
-            </span>
-            <SvgIcon
-              id="caret-down"
-              size=16
-              className={`transition-transform duration-300 ${if isOpen {
-                  "rotate-180"
-                } else {
-                  ""
-                }}`}
-            />
-          </div>
-        : React.null}
-      {isOpen
-        ? <div
-            className="flex flex-col gap-2 px-6 py-3 rounded-lg border border-t-0 rounded-t-none border-gray-500/25 bg-gray-500/10 transition-all duration-300"
-          >
-            {experience
-            ->Belt.Array.map(experience =>
-              <div className="flex items-start gap-2">
-                <SvgIcon id="arrow-right" size=20 className="text-purple-500 fill-purple-500" />
-                <span className="opacity-50 text-sm"> {React.string(experience)} </span>
-              </div>
-            )
-            ->React.array}
-            <div className="flex flex-wrap gap-2 items-center">
-              {Belt.Array.mapWithIndex(techStack, (index, skill) => {
-                <Chip key={`Skill_${Belt.Int.toString(index)}`} label=skill color=Chip.PURPLE />
-              })->React.array}
+        ? <ResponsiveWrapper.Header>
+            <div
+              className="flex gap-2 items-center justify-between px-6 py-4 rounded-lg border border-gray-500/25 hover:border-purple-500/25 bg-gray-500/10 hover:bg-purple-500/10 hover:shadow-sm hover:shadow-purple-500/25 cursor-pointer transition-all duration-300"
+              onClick={_ => isMobile ? () : setIsOpen(!isOpen)}
+            >
+              <span className="flex gap-2 items-center font-semibold">
+                <span className="size-2 rounded-full bg-purple-500" />
+                {React.string(companyProject)}
+              </span>
+              <SvgIcon
+                id="caret-down"
+                size=16
+                className={`transition-transform duration-300 ${if isOpen {
+                    "rotate-180"
+                  } else {
+                    ""
+                  }}`}
+              />
             </div>
-          </div>
+          </ResponsiveWrapper.Header>
         : React.null}
-    </div>
+      {isOpen || isMobile
+        ? <ResponsiveWrapper.Content>
+            <div
+              className="flex flex-col gap-2 px-6 py-3 rounded-lg border border-t-0 rounded-t-none border-gray-500/25 bg-gray-500/10 transition-all duration-300"
+            >
+              {experience
+              ->Belt.Array.map(experience =>
+                <div className="flex items-start gap-2">
+                  <SvgIcon id="arrow-right" size=20 className="text-purple-500 fill-purple-500" />
+                  <span className="opacity-50 text-sm"> {React.string(experience)} </span>
+                </div>
+              )
+              ->React.array}
+              <div className="flex flex-wrap gap-2 items-center">
+                {Belt.Array.mapWithIndex(techStack, (index, skill) => {
+                  <Chip key={`Skill_${Belt.Int.toString(index)}`} label=skill color=Chip.PURPLE />
+                })->React.array}
+              </div>
+            </div>
+          </ResponsiveWrapper.Content>
+        : React.null}
+    </ResponsiveWrapper>
   }
 }
 
@@ -151,7 +156,7 @@ module ExperienceBox = {
     <div
       className="flex flex-col gap-4 p-4 rounded-lg border border-gray-500/25 hover:border-purple-500/50 bg-gray-500/10 hover:shadow-sm hover:shadow-purple-500/25 transition-all duration-300"
     >
-      <div className="flex gap-4 justify-between items-start">
+      <div className="flex md:flex-row flex-col-reverse gap-4 justify-between items-start">
         <div className="flex flex-col gap-1">
           <span className="font-semibold"> {React.string(companyRole)} </span>
           <span className="text-gray-500"> {React.string(location + " · " + workType)} </span>

@@ -1,1 +1,1 @@
-let useTheme = () => React.useContext(ThemeContext.context)
+let use = () => React.useContext(ThemeContext.context)

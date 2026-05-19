@@ -4,7 +4,7 @@ module SvgIcon = SvgIcon
 
 @react.component
 let make = () => {
-  let {theme, toggleTheme} = UseTheme.useTheme()
+  let {theme, toggleTheme} = UseTheme.use()
 
   let handleClick = _evt => {
     toggleTheme()

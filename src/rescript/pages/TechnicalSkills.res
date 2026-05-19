@@ -70,19 +70,23 @@ let skillsData = [
 module SkillsCard = {
   @react.component
   let make = (~icon: string, ~label: string, ~skills: array<(string, Chip.color)>) => {
-    <div
+    <ResponsiveWrapper
       className="flex flex-col gap-4 p-6 rounded-lg border border-gray-500/25 hover:border-purple-500/25 bg-gray-500/10 hover:bg-purple-500/10 hover:shadow-sm hover:shadow-purple-500/25 hover:scale-102 cursor-pointer transition-all duration-300"
     >
-      <div className="flex gap-4 items-center">
-        <SvgIcon id=icon size=20 />
-        <span className="font-semibold"> {React.string(label)} </span>
-      </div>
-      <div className="flex flex-wrap gap-2 items-center">
-        {Belt.Array.mapWithIndex(skills, (index, (skill, color)) => {
-          <Chip key={`Skill_${Belt.Int.toString(index)}`} label=skill color=color />
-        })->React.array}
-      </div>
-    </div>
+      <ResponsiveWrapper.Header>
+        <div className="flex gap-4 items-center">
+          <SvgIcon id=icon size=20 />
+          <span className="font-semibold"> {React.string(label)} </span>
+        </div>
+      </ResponsiveWrapper.Header>
+      <ResponsiveWrapper.Content>
+        <div className="flex flex-wrap gap-2 items-center">
+          {Belt.Array.mapWithIndex(skills, (index, (skill, color)) => {
+            <Chip key={`Skill_${Belt.Int.toString(index)}`} label=skill color=color />
+          })->React.array}
+        </div>
+      </ResponsiveWrapper.Content>
+    </ResponsiveWrapper>
   }
 }
 
