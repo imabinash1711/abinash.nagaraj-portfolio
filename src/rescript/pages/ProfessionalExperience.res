@@ -124,8 +124,8 @@ module ExperienceCard = {
               className="flex flex-col gap-2 px-6 py-3 rounded-lg border border-t-0 rounded-t-none border-gray-500/25 bg-gray-500/10 transition-all duration-300"
             >
               {experience
-              ->Belt.Array.map(experience =>
-                <div className="flex items-start gap-2">
+              ->Belt.Array.mapWithIndex((idx, experience) =>
+                <div key={`Experience_${Belt.Int.toString(idx)}`} className="flex items-start gap-2">
                   <SvgIcon id="arrow-right" size=20 className="text-purple-500 fill-purple-500" />
                   <span className="opacity-50 text-sm"> {React.string(experience)} </span>
                 </div>
@@ -168,6 +168,7 @@ module ExperienceBox = {
         {experience
         ->Belt.Array.mapWithIndex((index, (companyProject, projectExperience, techStack)) =>
           <ExperienceCard
+            key={`ExperienceCard_${Belt.Int.toString(index)}`}
             companyProject=companyProject
             experience=projectExperience
             techStack=techStack

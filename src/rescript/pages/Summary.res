@@ -6,7 +6,7 @@ module StatsCard = {
   let make = (~items: array<(string, string)>) => {
     <>
       {Belt.Array.mapWithIndex(items, (index, (label, value)) => {
-        <div className="flex flex-col" id={`StatsCard_Item_${Belt.Int.toString(index)}`}>
+        <div key={`StatsCard_Item_${Belt.Int.toString(index)}`} className="flex flex-col">
           <span className="md:text-4xl text-2xl font-bold">
             {React.string(value)}
             <span className="text-purple-500"> {React.string("+")} </span>
@@ -26,7 +26,7 @@ module ListItems = {
     <>
       {Belt.Array.mapWithIndex(items, (index, (icon, value)) => {
         <div
-          id={`ListItem_${Belt.Int.toString(index)}`}
+          key={`ListItem_${Belt.Int.toString(index)}`}
           className="flex gap-4 items-center text-gray-400"
         >
           <SvgIcon id=icon size=28 className="border border-gray-400/50 rounded-md p-1" />

@@ -109,7 +109,8 @@ let make = (
         ? <div className="flex gap-4">
             {Belt.Array.mapWithIndex(stats, (index, (value, label)) => {
               <div
-                className="flex flex-col" id={`ProjectStatsCard_Item_${Belt.Int.toString(index)}`}
+                key={`ProjectStatsCard_Item_${Belt.Int.toString(index)}`}
+                className="flex flex-col"
               >
                 <span className="text-lg font-semibold text-purple-500">
                   {React.string(value)}
