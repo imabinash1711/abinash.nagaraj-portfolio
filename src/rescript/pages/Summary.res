@@ -91,7 +91,7 @@ let make = () => {
   ]
 
   <div
-    className="relative flex flex-col justify-center gap-4 min-h-screen h-full md:px-10 px-5 pt-18 pb-3"
+    className="relative flex flex-col justify-center gap-4 min-h-dvh h-full md:px-10 px-5 pt-18 pb-3"
   >
     <Chip label="Available for new opportunities" statusIndicator=true statusColor=GREEN />
     <div className="flex">

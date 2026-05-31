@@ -22,7 +22,7 @@ let make = () => {
   }
 
   <div
-    className="relative flex flex-col justify-between gap-4 min-h-screen h-full md:px-10 px-5 pt-18 pb-3"
+    className="relative flex flex-col justify-between gap-4 min-h-dvh h-full md:px-10 px-5 pt-18 pb-3"
   >
     <div />
     <div

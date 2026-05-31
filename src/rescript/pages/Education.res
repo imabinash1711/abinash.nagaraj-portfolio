@@ -1,7 +1,7 @@
 @react.component
 let make = () => {
   <div
-    className="relative flex flex-col justify-center gap-8 min-h-screen h-full md:px-10 px-5 pt-18 pb-3"
+    className="relative flex flex-col justify-center gap-8 min-h-dvh h-full md:px-10 px-5 pt-18 pb-3"
   >
     <div className="flex flex-col gap-2">
       <span className="font-mono text-purple-500"> {React.string("ACADEMIC BACKGROUND")} </span>
