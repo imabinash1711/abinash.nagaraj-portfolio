@@ -6,12 +6,18 @@ let make = (~children: React.element) => {
     ->Belt.Array.mapWithIndex((index, child) => {
       let oddClass = "odd:bg-stone-900 odd:text-gray-100 odd:fill-gray-100"
       let evenClass = "even:bg-stone-100 even:text-gray-900 even:fill-gray-900"
-      <div
-        key={`Snap_Child_${Belt.Int.toString(index)}`}
-        className={` ${evenClass} ${oddClass} snap-always snap-center `}
+      <SnapCssProvider
+        css={index % 2 == 0
+          ? "bg-stone-900 text-gray-100 fill-gray-100"
+          : "bg-stone-100 text-gray-900 fill-gray-900"}
       >
-        {child}
-      </div>
+        <div
+          key={`Snap_Child_${Belt.Int.toString(index)}`}
+          className={` ${evenClass} ${oddClass} snap-always snap-center `}
+        >
+          {child}
+        </div>
+      </SnapCssProvider>
     })
     ->React.array}
   </div>

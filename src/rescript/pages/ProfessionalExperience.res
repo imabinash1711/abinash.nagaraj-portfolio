@@ -152,6 +152,7 @@ module ExperienceBox = {
     ~workType: string,
     ~experience: array<(string, array<string>, array<string>)>,
   ) => {
+    let isMobile = UseMobileView.use()
     let (projectNo, setProjectNo) = React.useState(() => 0)
     <div
       className="flex flex-col gap-4 p-4 rounded-lg border border-gray-500/25 hover:border-purple-500/50 bg-gray-500/10 hover:shadow-sm hover:shadow-purple-500/25 transition-all duration-300"
@@ -170,7 +171,7 @@ module ExperienceBox = {
             companyProject=companyProject
             experience=projectExperience
             techStack=techStack
-            isOpen={projectNo === index}
+            isOpen={!isMobile && projectNo === index}
             setIsOpen={isOpen =>
               if isOpen {
                 setProjectNo(_ => index)

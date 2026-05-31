@@ -19,7 +19,7 @@ let projectsData = [
     "car",
     "Juspay · NammaYatri",
     "Open Mobility Dashboards",
-    "Public data dashboards for Namma Yatri, Yatri Sathi and Yatri — visualizing ride data, driver payouts, and cancellations in real-time. Aligned to ONDC/Beckn Protocol.",
+    "Public data dashboards for [Namma Yatri](https://nammayatri.in/), [Yatri Sathi](https://yatrisathi.in/) and [Yatri](https://getyatri.com/) — visualizing ride data, driver payouts, and cancellations in real-time. Aligned to ONDC/Beckn Protocol.",
     [("1M+", "Rides visualized"), ("100K+", "Driver payouts")],
     ["React.js", "ReScript", "Highcharts", "Astro"],
   ),

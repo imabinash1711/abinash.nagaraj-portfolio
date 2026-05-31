@@ -1,3 +1,85 @@
+let parseMarkdownLinks = (text: string): React.element => {
+  let linkPattern = /\[([^\]]+)\]\(([^)]+)\)/
+
+  let rec parse = (remaining: string, acc: list<React.element>, key: int): list<React.element> => {
+    switch linkPattern->RegExp.exec(remaining) {
+    | Some(result) => {
+        let matchIndex = result->RegExp.Result.index
+        let fullMatch = result->RegExp.Result.fullMatch
+
+        // Extract link text and URL from the full match
+        let linkText = {
+          let startBracket = String.indexOf(fullMatch, "[")
+          let endBracket = String.indexOf(fullMatch, "]")
+          if startBracket >= 0 && endBracket > startBracket {
+            Js.String.substring(~from=startBracket + 1, ~to_=endBracket, fullMatch)
+          } else {
+            ""
+          }
+        }
+
+        let url = {
+          let startParen = String.indexOf(fullMatch, "(")
+          let endParen = String.indexOf(fullMatch, ")")
+          if startParen >= 0 && endParen > startParen {
+            Js.String.substring(~from=startParen + 1, ~to_=endParen, fullMatch)
+          } else {
+            ""
+          }
+        }
+
+        let newElements = if matchIndex > 0 {
+          let beforeText = Js.String.substring(~from=0, ~to_=matchIndex, remaining)
+          list{
+            <React.Fragment key={`text-${Belt.Int.toString(key)}`}>
+              {React.string(beforeText)}
+            </React.Fragment>,
+          }
+        } else {
+          list{}
+        }
+
+        let linkElement = list{
+          <a
+            key={`link-${Belt.Int.toString(key + 1)}`}
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-purple-500 hover:text-purple-600 underline"
+          >
+            {React.string(linkText)}
+          </a>,
+        }
+
+        let afterIndex = matchIndex + String.length(fullMatch)
+        let afterText = Js.String.substringToEnd(~from=afterIndex, remaining)
+
+        parse(afterText, Belt.List.concatMany([acc, newElements, linkElement]), key + 2)
+      }
+    | None => if String.length(remaining) > 0 {
+        Belt.List.concat(
+          acc,
+          list{
+            <React.Fragment key={`text-${Belt.Int.toString(key)}`}>
+              {React.string(remaining)}
+            </React.Fragment>,
+          },
+        )
+      } else {
+        acc
+      }
+    }
+  }
+
+  let elements = parse(text, list{}, 0)
+
+  if Belt.List.length(elements) == 0 {
+    React.string(text)
+  } else {
+    <> {React.array(Belt.List.toArray(elements))} </>
+  }
+}
+
 @react.component
 let make = (
   ~icon: string,
@@ -22,7 +104,7 @@ let make = (
       </div>
     </ResponsiveWrapper.Header>
     <ResponsiveWrapper.Content>
-      <span className="opacity-50"> {React.string(description)} </span>
+      <span className="opacity-50"> {parseMarkdownLinks(description)} </span>
       {stats->Belt.Array.length > 0
         ? <div className="flex gap-4">
             {Belt.Array.mapWithIndex(stats, (index, (value, label)) => {

@@ -17,7 +17,8 @@ module Content = {
 @react.component
 let make = (~children: React.element, ~className: string="") => {
   let isMobile = UseMobileView.use()
-  let {showPopup} = UsePopup.use()
+  let {showPopup, setClassName} = UsePopup.use()
+  let {className: snapClassName} = UseSnapCss.use()
 
   let childArr = React.Children.toArray(children)
 
@@ -33,6 +34,7 @@ let make = (~children: React.element, ~className: string="") => {
 
   let showPopup = () => {
     if isMobile && header != React.null {
+      setClassName(snapClassName)
       showPopup(
         <div className={className}>
           {header}
