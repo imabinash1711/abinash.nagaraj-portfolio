@@ -51,11 +51,10 @@ module ProfileCard = {
     <div
       className="bg-gray-900/10 border border-gray-400/50 border-t-4 border-t-purple-500 rounded-3xl p-6 w-full h-full flex flex-col gap-4 shadow-md"
     >
-      <div
+      <img
+      src="/Abinash Nagaraj.jpg"
         className="flex items-center justify-center border-2 border-purple-500 rounded-full size-20 self-center text-4xl font-bold text-purple-300"
-      >
-        {React.string("AN")}
-      </div>
+      />
       <span className="text-center text-xl font-semibold"> {React.string("Abinash Nagaraj")} </span>
       <span className="text-center text-purple-300">
         {React.string("Senior Software Engineer @ Accolite")}

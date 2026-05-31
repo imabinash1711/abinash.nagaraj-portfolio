@@ -13,6 +13,7 @@ let make = (~children: React.element) => {
           : "bg-stone-100 text-gray-900 fill-gray-900"}
       >
         <div
+          id={`section-${Belt.Int.toString(index)}`}
           className={` ${evenClass} ${oddClass} snap-always snap-center `}
         >
           {child}

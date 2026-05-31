@@ -1,11 +1,13 @@
 @react.component
 let make = () => {
+  let activeSection = UseActiveSection.use()
+
   // <ThemeProvider>
   <PopupProvider>
     <div
       className="font-inter overflow-hidden bg-white dark:bg-black text-gray-900 dark:text-gray-100 fill-gray-900 dark:fill-gray-100 min-h-dvh transtion-all duration-300"
     >
-      <Navbar />
+      <Navbar activeSection />
       <Snap>
         <Summary />
         <TechnicalSkills skills={Belt.Array.slice(TechnicalSkills.skillsData, ~offset=0, ~len=3)} />
