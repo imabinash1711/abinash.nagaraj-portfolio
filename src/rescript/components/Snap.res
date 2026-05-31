@@ -1,6 +1,6 @@
 @react.component
 let make = (~children: React.element) => {
-  <div className="snap-y snap-mandatory overflow-y-scroll h-screen scrollbar-none">
+  <div className="snap-y snap-mandatory overflow-y-scroll h-dvh scrollbar-none">
     {children
     ->React.Children.toArray
     ->Belt.Array.mapWithIndex((index, child) => {

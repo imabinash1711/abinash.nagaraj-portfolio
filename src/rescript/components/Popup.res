@@ -35,7 +35,7 @@ let make = () => {
   | None => React.null
   | Some(c) =>
     <div
-      className="absolute backdrop-blur-xs inset-0 w-screen h-screen flex items-center justify-center z-50 transition-all ease-in-out duration-300"
+      className="absolute backdrop-blur-xs inset-0 w-dvw h-dvh flex items-center justify-center z-50 transition-all ease-in-out duration-300"
       onClick={_ => handleClose()}
     >
       <div
