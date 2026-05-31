@@ -43,7 +43,7 @@ module ProfileCard = {
     let listItems = [
       ("location", "Bengaluru, India"),
       ("graduation-cap", "B.E. ECE — GPA 9.05"),
-      ("briefcase", "Accolite Digital, Oct 2022"),
+      ("briefcase", "Accolite, Oct 2022"),
       ("phone", "+91 733-930-4118"),
     ]
 

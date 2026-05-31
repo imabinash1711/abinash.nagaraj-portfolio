@@ -1,6 +1,6 @@
 let experienceData = [
   (
-    "Accolite Digital — Senior Software Engineer",
+    "Accolite — Senior Software Engineer",
     "Oct 2024 - Present",
     "Bengaluru, India",
     "Full-time",
@@ -35,7 +35,7 @@ let experienceData = [
     ],
   ),
   (
-    "Accolite Digital — Software Engineer",
+    "Accolite — Software Engineer",
     "Oct 2022 - Sep 2024",
     "Bengaluru, India",
     "Full-time",
@@ -69,7 +69,7 @@ let experienceData = [
     ],
   ),
   (
-    "Accolite Digital — Software Engineer Intern",
+    "Accolite — Software Engineer Intern",
     "Feb 2022 - Sep 2022",
     "Bengaluru, India",
     "Internship",
